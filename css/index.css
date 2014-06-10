@@ -1,0 +1,11 @@
+body {
+  position: relative;
+  height: 2000px;
+  background: url(../images/grid.png);
+}
+
+#pagetop {
+  position: fixed;
+  bottom: -200px;
+  right: 20px;
+}

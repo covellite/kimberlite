@@ -3,28 +3,46 @@
 
     $.fn.kimberlite = function (o) {
         var d = {
-            child: '#content'
+            scrollPoint: 200,
+            scrollSpeed: 600,
+            displaySpeed: 100,
+            showBottom: "20px",
+            hideBottom: "-200px"
         },
             fo = $.extend({}, d, o);
 
         return this.each(function () {
-            var parent = this;
+            var pagetop = $(this);
+            $(window).scroll(function(e) {
+                if ($(this).scrollTop() >= fo.scrollPoint) {
+                    pagetop
+                        .animate({
+                            bottom: fo.showBottom
+                        },fo.displaySpeed);
+                } else {
+                    pagetop
+                        .animate({
+                            bottom: fo.hideBottom
+                        },fo.displaySpeed);
+                }
+            });
 
-            $(this).children()
+            pagetop
                 .click(function (e) {
-                    var num = $(parent).children().index(this);
-                    $(parent).children()
-                       　.removeClass('select');
-                   　$(this)
-                      　　.addClass('select');
-                    $(fo.child).children()
-                        .addClass('hide')
-                        .eq(num).removeClass('hide');
-
+                    $('body')
+                        .animate({
+                            scrollTop: 0
+                        }, fo.scrollSpeed, function() {
+                            console.log(1);
+                            $(this)
+                                .animate({
+                                    bottom: fo.hideBottom
+                                },0);
+                        });
                     e.preventDefault();
                 });
-
         });
+
     };
 
 }(jQuery));
