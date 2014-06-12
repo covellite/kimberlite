@@ -1,2 +1,1 @@
-$('#pagetop').kimberlite({
-});
+$('#pagetop').kimberlite({});

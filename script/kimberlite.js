@@ -33,7 +33,6 @@
                         .animate({
                             scrollTop: 0
                         }, fo.scrollSpeed, function() {
-                            console.log(1);
                             $(this)
                                 .animate({
                                     bottom: fo.hideBottom
